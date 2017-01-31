@@ -19,6 +19,7 @@ def hello():
 
 @app.route("/{0}/".format(TOKEN), methods=['GET', 'POST'])
 def dispatch():
+    print('WHAT?!')
     if request.method == "POST":
         # retrieve the message in JSON and then transform it to Telegram object
         json = request.get_json(force=True)
