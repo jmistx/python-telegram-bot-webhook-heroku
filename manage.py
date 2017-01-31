@@ -23,7 +23,11 @@ def dispatch():
     print('WHAT?!')
     if request.method == "POST":
         # retrieve the message in JSON and then transform it to Telegram object
+
+        print(request)
         data = request.get_json(force=True)
+        print(data)
+        print('Type', type(data))
         update = json.loads(data)
         print('Request data:', data)
 
