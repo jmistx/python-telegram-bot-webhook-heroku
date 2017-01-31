@@ -1,6 +1,7 @@
 import os
 import telegram
 import json
+from pprint import pprint
 from telegram.ext import Updater, CommandHandler
 from flask import Flask, request
 
@@ -18,19 +19,18 @@ def hello():
     return "Hello World!"
 
 
-@app.route("/{0}/".format(TOKEN), methods=['GET', 'POST'])
+@app.route("/{0}".format(TOKEN), methods=['GET', 'POST'])
 def dispatch():
-    print('WHAT?!')
+    print('1')
     if request.method == "POST":
         data = request.get_json(force=True)
-        update = telegram.Update.de_json(data, bot)
-        print(dir(update))
-
-        chat_id = update.message.chat.id
-        text = update.message.text.encode('utf-8')
+        pprint(data)
+        chat_id = data['message']['chat']['id']
+        text = data['message']['text'].encode('utf-8')
 
         # repeat the same message back (echo)
         bot.sendMessage(chat_id=chat_id, text=text)
+        pprint('answer')
 
     return 'ok'
 
