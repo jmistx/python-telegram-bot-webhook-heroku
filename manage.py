@@ -17,7 +17,7 @@ def hello():
     return "Hello World!"
 
 
-@app.route("/{0}/".format(TOKEN))
+@app.route("/{0}/".format(TOKEN), methods=['GET', 'POST'])
 def dispatch():
     if request.method == "POST":
         # retrieve the message in JSON and then transform it to Telegram object
@@ -35,7 +35,7 @@ def dispatch():
 
     return 'ok'
 
-@app.route('/set_webhook', methods=['GET', 'POST'])
+@app.route('/set_webhook')
 def set_webhook():
     s = bot.set_webhook(webhook_url="https://telegrambotexample31337.herokuapp.com/" + TOKEN)
     if s:
