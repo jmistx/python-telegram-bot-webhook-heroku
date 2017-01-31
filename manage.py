@@ -1,44 +1,21 @@
 import os
-import telegram
-from pprint import pprint
-from flask import Flask, request
+from telegram.ext import Updater, MessageHandler, Filters
 
-app = Flask(__name__)
 TOKEN = os.environ.get('TOKEN', 'TOKEN')
-
-global bot
-bot = telegram.Bot(token=TOKEN)
-
-@app.route('/')
-def hello():
-    return 'Hello World!'
+PORT = int(os.environ.get('PORT', '5000'))
 
 
-# this routing a single really needed, and it can be programmed easly
-@app.route('/{0}'.format(TOKEN), methods=['GET', 'POST'])
-def dispatch():
-    if request.method == 'POST':
-        # You probably want to convert json to object with properties
-        # See Updater.de_json
-        data = request.get_json(force=True)
-        chat_id = data['message']['chat']['id']
-        text = data['message']['text'].encode('utf-8')
-
-        bot.sendMessage(chat_id=chat_id, text=text)
+def echo(bot, update):
+    update.message.reply_text(update.message.text)
 
 
-    return 'ok'
+updater = Updater(TOKEN)
 
+# add handlers
+updater.dispatcher.add_handler(MessageHandler(Filters.text, echo))
 
-# This routing actually not required. You can setup webhook from any program.
-@app.route('/{0}/set_webhook'.format(TOKEN))
-def set_webhook():
-    s = bot.set_webhook(webhook_url='https://telegrambotexample31337.herokuapp.com/' + TOKEN)
-    if s:
-        return 'webhook setup ok'
-    else:
-        return 'webhook setup failed'
-
-
-if __name__ == '__main__':
-    app.run()
+updater.start_webhook(listen="0.0.0.0",
+                      port=PORT,
+                      url_path=TOKEN)
+updater.bot.setWebhook("https://telegrambotexample31337.herokuapp.com/" + TOKEN)
+updater.idle()
