@@ -8,8 +8,8 @@ TOKEN = os.environ.get('TOKEN', 'TOKEN')
 PORT = int(os.environ.get('PORT', '8000'))
 print('Data', PORT, TOKEN)
 
+global bot
 bot = telegram.Bot(token=TOKEN)
-bot.set_webhook(webhook_url="https://telegrambotexample31337.herokuapp.com/" + TOKEN)
 
 
 @app.route("/")
@@ -33,7 +33,13 @@ def dispatch():
 
     return 'ok'
 
-
+@app.route('/set_webhook', methods=['GET', 'POST'])
+def set_webhook():
+    s = bot.set_webhook(webhook_url="https://telegrambotexample31337.herokuapp.com/" + TOKEN)
+    if s:
+        return "webhook setup ok"
+    else:
+        return "webhook setup failed"
 
 
 if __name__ == "__main__":
