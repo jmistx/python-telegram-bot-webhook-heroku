@@ -1,0 +1,28 @@
+<application>
+  <component name="PyTestFrameworkService">
+    <option name="SDK_TO_PYTEST">
+      <map>
+        <entry key="/Library/Frameworks/Python.framework/Versions/3.5/bin/python3.5" value="false" />
+        <entry key="$USER_HOME$/Documents/AutomateWorld/openlessonenv/bin/python" value="false" />
+        <entry key="$USER_HOME$/Documents/Netology_Python_course/code/Python_course/OpenLesson/openlessonenv/bin/python3" value="false" />
+        <entry key="$USER_HOME$/Documents/Netology_Python_course/pythoncourse/OpenLesson/openlessonenv/bin/python" value="false" />
+      </map>
+    </option>
+    <option name="SDK_TO_NOSETEST">
+      <map>
+        <entry key="/Library/Frameworks/Python.framework/Versions/3.5/bin/python3.5" value="false" />
+        <entry key="$USER_HOME$/Documents/AutomateWorld/openlessonenv/bin/python" value="false" />
+        <entry key="$USER_HOME$/Documents/Netology_Python_course/code/Python_course/OpenLesson/openlessonenv/bin/python3" value="false" />
+        <entry key="$USER_HOME$/Documents/Netology_Python_course/pythoncourse/OpenLesson/openlessonenv/bin/python" value="false" />
+      </map>
+    </option>
+    <option name="SDK_TO_ATTEST">
+      <map>
+        <entry key="/Library/Frameworks/Python.framework/Versions/3.5/bin/python3.5" value="false" />
+        <entry key="$USER_HOME$/Documents/AutomateWorld/openlessonenv/bin/python" value="false" />
+        <entry key="$USER_HOME$/Documents/Netology_Python_course/code/Python_course/OpenLesson/openlessonenv/bin/python3" value="false" />
+        <entry key="$USER_HOME$/Documents/Netology_Python_course/pythoncourse/OpenLesson/openlessonenv/bin/python" value="false" />
+      </map>
+    </option>
+  </component>
+</application>
