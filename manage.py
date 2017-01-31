@@ -1,5 +1,6 @@
 import os
 import telegram
+import json
 from telegram.ext import Updater, CommandHandler
 from flask import Flask, request
 
@@ -22,9 +23,9 @@ def dispatch():
     print('WHAT?!')
     if request.method == "POST":
         # retrieve the message in JSON and then transform it to Telegram object
-        json = request.get_json(force=True)
-        update = telegram.Update.de_json(json)
-        print('Request data:', json)
+        data = request.get_json(force=True)
+        update = json.loads(data)
+        print('Request data:', data)
 
         chat_id = update.message.chat.id
 
