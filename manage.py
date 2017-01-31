@@ -22,18 +22,11 @@ def hello():
 def dispatch():
     print('WHAT?!')
     if request.method == "POST":
-        # retrieve the message in JSON and then transform it to Telegram object
-
-        print(request)
         data = request.get_json(force=True)
-        print(data)
-        print('Type', type(data))
-        update = json.loads(data)
-        print('Request data:', data)
+        update = telegram.Update.de_json(data, bot)
+        print(dir(update))
 
         chat_id = update.message.chat.id
-
-        # Telegram understands UTF-8, so encode text for unicode compatibility
         text = update.message.text.encode('utf-8')
 
         # repeat the same message back (echo)
